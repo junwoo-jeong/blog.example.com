@@ -9,18 +9,7 @@ import mongoose from 'mongoose';
 
 //import routes
 import api from './routes';
-
 const app = express();
-
-// connect to mongodb server
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', () => {
-    console.log('connected to mongod server');
-});
-mongoose.connect(process.env.DB_URI);
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +22,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', api);
+
+// connect to mongodb server
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', () => {
+    console.log('connected to mongod server');
+});
+mongoose.connect(process.env.DB_URI)
+    .then;
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

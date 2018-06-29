@@ -6,12 +6,15 @@
     "start": "nodemon ./bin/www --exec babel-node --presets babel-preset-env"
   },
   "dependencies": {
+    "asyncify-express": "0.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.0.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
+    "express-async-errors": "^3.0.0",
+    "express-asyncify": "^1.0.0",
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "mongodb": "^3.0.10",
@@ -20,6 +23,9 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
