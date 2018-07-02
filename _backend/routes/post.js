@@ -1,5 +1,4 @@
 import express from 'express';
-import Post from './../models/post.js';
 import asyncify from 'express-asyncify';
 import * as controller from './post.controller.js';
 
@@ -7,9 +6,8 @@ const router = asyncify(express.Router());
 
 
 router.get('/', controller.getAllPost);
-router.get('/write', controller.writePost);
-router.get('/:id', function(req, res){
-    res.send(`/post/${req.params.id} : success`);
-});
+router.get('/:id', controller.getPostById);
+router.post('/write', controller.writePost);
+
 
 export default router;

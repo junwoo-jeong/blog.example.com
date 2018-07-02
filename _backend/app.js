@@ -7,9 +7,11 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
 
+const app = express();
+
 //import routes
 import api from './routes';
-const app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', api);
+app.use('/api', api);
 
 // connect to mongodb server
 mongoose.Promise = global.Promise;
@@ -30,8 +32,7 @@ db.on('error', console.error);
 db.once('open', () => {
     console.log('connected to mongod server');
 });
-mongoose.connect(process.env.DB_URI)
-    .then;
+mongoose.connect(process.env.DB_URI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
