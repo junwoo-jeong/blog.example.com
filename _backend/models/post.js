@@ -1,5 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 
+const Tag = new Schema({
+    title: {type: String}
+});
+
 const Comment = new Schema({
     contents: {type: String, required: true },
     auther: {type: String, required: true },
@@ -12,6 +16,8 @@ const Post = new Schema({
     contents: { type: String },
     author: { type: String, default: 'jeong' },
     date: { type: String },
+    category: { type: String },
+    tag: [Tag],
     comments: [Comment]
 });
 
@@ -23,32 +29,41 @@ Post.statics.getAll = function() {
 //특정 id post 가져 오기
 Post.statics.getPostById = function(targetId) {
     return this.findOne({ id: targetId });
-}
+};
 
 //글 쓰기
-Post.statics.writePost = function({ title, id, contents, author, date, comments }) {
+Post.statics.writePost = function({ title, id, contents, author, date, category, tag, comments }) {
     const post = new this({
         title,
         id,
         contents,
         author,
         date,
+        category,
+        tag,
         comments
     });
     post.save();
 }
 
 //글 수정
-Post.statics.updatePost = function(targetId, {title, contents, author, date }) {
-    retrun this.findOneAndUpdate({id: targetId},{
+Post.statics.updatePost = function(targetId, {title, contents, author, date, category, tag }) {
+    return this.findOneAndUpdate({id: targetId},{
         $set: {
             title,
             id: targetId,
             contents,
             author,
-            date
+            date,
+            category,
+            tag
         }
     });
+}
+
+//글 삭제
+Post.statics.deletePost = function(targetId) {
+    return this.findOneAndDelete({id: targetId});
 }
 
 //글 검색

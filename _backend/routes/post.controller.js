@@ -1,11 +1,20 @@
 import Post from './../models/post.js';
 import moment from 'moment-timezone';
+//import queryString from 'query-string'; 나중에 검색 기능 추가할때
+//쿼리를 편하게 변경
+
+//console.log(req.baseUrl); return : /api/post
+//console.log(req.params); return : { id: '12' }
+//console.log(req.path); return : /12
 
 // URL : api/post     METHOD : GET
 export const getAllPost = async (req, res) => {
-    const post = await Post.getAll();
-    console.log(post);
-    res.json(post);
+    try {
+        const post = await Post.getAll();
+        res.json(post);
+    } catch (error) {
+        throw error;
+    }
 }
 
 // URL : api/post/:id     METHOD : GET
@@ -13,13 +22,10 @@ export const getPostById = async (req, res) => {
     const targetId = req.params.id;
     try {
         const post = await Post.getPostById(targetId);
-        //post 검색에 따라 화면 출력
-
         res.json(post);
     } catch (error) {
         throw error;
     }
-
 }
 
 // URL : api/post/write     METHOD : POST
@@ -30,8 +36,10 @@ export const writePost = async (req, res) => {
         contents: req.body.contents,
         author: req.body.author,
         date: moment().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
-        comments: []
-    }
+        comments: [],
+        category: req.body.category,
+        tag: teq.body.tags
+    };
     try {
         const result = await Post.writePost(post);
         return res.json({
@@ -42,9 +50,8 @@ export const writePost = async (req, res) => {
     };
 }
 
-// URL : api/post/update/:id     METHOD : UPDATE
+// URL : api/post/:id/update    METHOD : PUT
 export const updatePost = async (req, res) => {
-
     try {
         const result = await Post.updatePost()
     }catch(error){
@@ -52,7 +59,12 @@ export const updatePost = async (req, res) => {
     }
 };
 
-// URL : api/post/delete/:id     METHOD : DELETE
+// URL : api/post/:id/delete    METHOD : DELETE
 export const deletePost = async (req, res) => {
+    const targetId = req.params.id
+    try {
 
+    } catch (error) {
+
+    }
 };
