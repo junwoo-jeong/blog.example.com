@@ -12,7 +12,6 @@ const app = express();
 //import routes
 import api from './routes';
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

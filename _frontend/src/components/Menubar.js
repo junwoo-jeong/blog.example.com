@@ -1,43 +1,26 @@
 // Nav.js
-import React,{ Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Menu, Search } from '@material-ui/icons';
 import SearchBar from './SearchBar';
 
-class MenuBar extends Component {
-    state = {
-        search: false
-    }
-    _handleSearch = () => {
-        const stateSearch = this.state.search;
-        if(stateSearch){
-            this.setState({
-                search: false
-            });
-        }else{
-            this.setState({
-                search: true
-            });
-        }
-    }
-    render () {
-        const {_handleSearch} = this;
-        const {search} = this.state;
-
+class MenuBar extends Component{
+    render() {
+        const {isSearched ,onClickedSearch, onClickedMenuTab } = this.props;
         return (
             <Fragment>
                 <SearchBar
-                    search={search}
-                    _handleSearch={_handleSearch}
+                    isSearched={isSearched}
+                    onClickedSearch={onClickedSearch}
                 />
                 <NavWrapper>
-                    <MenuButton>
+                    <MenuButton onClick={onClickedMenuTab}>
                         <Menu />
                     </MenuButton>
                     <Title>
                         <span>title</span>
                     </Title>
-                    <SearchButton onClick={_handleSearch}>
+                    <SearchButton onClick={onClickedSearch}>
                         <Search />
                     </SearchButton>
                 </NavWrapper>
@@ -45,7 +28,6 @@ class MenuBar extends Component {
         )
     }
 }
-
 const NavWrapper = styled.nav`
     display: flex;
     width: 100%;
@@ -62,7 +44,8 @@ const MenuButton = styled.div`
     margin-left: 10px;
     color: #fff;
     &:hover{
-        color:#888;
+        color: #ffebee;
+        cursor: pointer;
     }
 `;
 
@@ -80,30 +63,8 @@ const SearchButton = styled.div`
     line-height: 60px;
     margin-right: 10px;
     &:hover{
-        color:#888;
+        color: #ffebee;
         cursor: pointer;
-    }
-`;
-
-const NavList = styled.ul`
-    display: flex;
-    list-style-type: none;
-    justify-content: flex-end;
-`;
-
-const NavItem = styled.li`
-    width: 100px;
-    background-color: #1f4f1d;
-    a {
-        font-size: 16px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        transition: color .25s ease-in-out;
-
-        &:hover {
-         color: #888;
-        }
     }
 `;
 

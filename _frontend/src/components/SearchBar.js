@@ -2,21 +2,25 @@ import React,{ Component, Fragment } from 'react';
 import styled from 'styled-components';
 import {Close} from '@material-ui/icons';
 
-const SearchBar = ({search, _handleSearch}) => {
-    return (
-        <SearchWrapper search={search}>
-            <SearchInput placeholder="search"/>
-            <SearchCancel onClick={_handleSearch}><Close/></SearchCancel>
-        </SearchWrapper>
-    )
+class SearchBar extends Component {
+    render(){
+        const {isSearched, onClickedSearch} = this.props;
+        return(
+            <SearchWrapper isSearched={isSearched}>
+                <SearchInput placeholder="search" />
+                <SearchCancel onClick={onClickedSearch}><Close /></SearchCancel>
+            </SearchWrapper>
+        )
+    }
 }
+
 const SearchWrapper = styled.form`
     display: flex;
     width: 100%;
     height: 50px;
     position: fixed;
-    visibility: ${props => props.search ? 'visible' : 'hidden'};
-    opacity: ${props => props.search ? '1':'0'};
+    visibility: ${props => props.isSearched ? 'visible' : 'hidden'};
+    opacity: ${props => props.isSearched ? '1':'0'};
     transition: visibility 0s linear 0.22s, opacity 0.22s linear;
     transition-delay: 0s;
     background-color: blue;
@@ -38,7 +42,7 @@ const SearchCancel = styled.div`
     line-height:60px;
     text-align: center;
     background-color: #fff;
-    font
+    transition: color .25s ease-in-out;
     &:hover{
         color:#888;
         cursor: pointer;
