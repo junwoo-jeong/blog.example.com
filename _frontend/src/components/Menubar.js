@@ -1,6 +1,6 @@
 // Nav.js
 import React, { Component, Fragment } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Menu, Search } from '@material-ui/icons';
 import SearchBar from './SearchBar';
 
@@ -18,7 +18,7 @@ class MenuBar extends Component{
                         <Menu />
                     </MenuButton>
                     <Title>
-                        <span>title</span>
+                        <span>ㅎㅇㅇㅎㅎㅇㅎㅇㅎㅇ</span>
                     </Title>
                     <SearchButton onClick={onClickedSearch}>
                         <Search />
@@ -34,7 +34,7 @@ const NavWrapper = styled.nav`
     height: 50px;
     background-color: #ff1744;
     justify-content: space-between;
-    box-shadow: 0 5px 5px gray;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.3);
     position: fixed;
     z-index: 1;
 `;
@@ -54,6 +54,7 @@ const Title = styled.div`
     span {
         line-height: 50px;
         font-size: 1.5em;
+        font-weight: 600;
     }
 
 `;

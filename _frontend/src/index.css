@@ -1,25 +1,4 @@
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
-/** * 1. 기본 글꼴을 sans-serif로 설정. * 2. iOS와 IE에서 기기 회전시에 사용자가 확대하지 않아도 글씨 크기가 재조정되는 것을 예방. */
-
-html {
-    font-family: sans-serif;
-    /* 1 */
-    -ms-text-size-adjust: 100%;
-    /* 2 */
-    -webkit-text-size-adjust: 100%;
-    /* 2 */
-}
-
-/** * 기본 마진값을 제거. */
-
-body {
-    margin: 0;
-    background-color: #f5f5f5;
-}
-
-/* HTML5 display definitions ========================================================================== */
-
+﻿
 /** * IE8/9에서 정의되지 않은 HTML5 요소를 'block'으로 지정. * IE10/11, Firefox에서 정의되지 않은 `detail` 혹은 `summary` 를 `block`으로 지정. * IE11에서 정의되지 않은 `main`을 `block`으로 지정 */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {

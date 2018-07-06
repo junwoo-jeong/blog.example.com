@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { Route,Switch } from 'react-router-dom';
 import { Home, About } from 'pages';
-import MenuBar from '../components/MenuBar';
+import { injectGlobal } from 'styled-components';
 
+injectGlobal`
+    html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Nanum Gothic', sans-serif;
+        background-color: #f0f0f0;
+    }
+`;
 class App extends Component {
     render() {
         return (
