@@ -5869,6 +5869,10 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-loading@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.2.tgz#bc6d908fa316e1ccd677b7567792049a9bb4be0d"
+
 react-popper@^0.10.0:
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.10.4.tgz#af2a415ea22291edd504678d7afda8a6ee3295aa"
@@ -5898,6 +5902,10 @@ react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-script@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-script/-/react-script-2.0.5.tgz#9dac20f97cff1fb40f5b4084e3f44b82e3001572"
 
 react-scripts@1.1.4:
   version "1.1.4"

@@ -12,7 +12,8 @@ const Comment = new Schema({
 
 const Post = new Schema({
     title: { type: String },
-    id: { type: Number }, //id : auto increment colomn
+    img: { type: String},
+    id: { type: String }, //id : auto increment colomn
     contents: { type: String },
     author: { type: String, default: 'jeong' },
     date: { type: String },
@@ -21,9 +22,9 @@ const Post = new Schema({
     comments: [Comment]
 });
 
-//모든 post 가져 오기
-Post.statics.getAll = function() {
-    return this.find();
+// 패이지 별로 post 가져 오기
+Post.statics.getPostsPage = function(page) {
+    return this.find().sort({ "_id": -1 }).skip((page-1)*5).limit(5);
 };
 
 //특정 id post 가져 오기
@@ -32,9 +33,10 @@ Post.statics.getPostById = function(targetId) {
 };
 
 //글 쓰기
-Post.statics.writePost = function({ title, id, contents, author, date, category, tag, comments }) {
+Post.statics.writePost = function({ title, img, id, contents, author, date, category, tag, comments }) {
     const post = new this({
         title,
+        img,
         id,
         contents,
         author,
@@ -43,6 +45,7 @@ Post.statics.writePost = function({ title, id, contents, author, date, category,
         tag,
         comments
     });
+
     post.save();
 }
 

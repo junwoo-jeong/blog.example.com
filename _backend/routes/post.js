@@ -5,7 +5,7 @@ import * as controller from './post.controller.js';
 const router = asyncify(express.Router());
 
 
-router.get('/', controller.getAllPost);
+router.get('/', controller.getPostPage);
 router.get('/:id', controller.getPostById);
 router.post('/write', controller.writePost);
 //router.put('/:id/update', controller.updatePost);

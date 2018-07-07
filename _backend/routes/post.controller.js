@@ -7,11 +7,15 @@ import moment from 'moment-timezone';
 //console.log(req.params); return : { id: '12' }
 //console.log(req.path); return : /12
 
-// URL : api/post     METHOD : GET
-export const getAllPost = async (req, res) => {
+// URL : api/post?page=""     METHOD : GET
+// sortBy : date
+export const getPostPage = async (req, res) => {
+    if(!req.query.page) throw error;
+    const page = req.query.page;
+    console.log();
     try {
-        const post = await Post.getAll();
-        res.json(post);
+        const posts = await Post.getPostsPage(page);
+        res.json(posts);
     } catch (error) {
         throw error;
     }
@@ -33,6 +37,7 @@ export const writePost = async (req, res) => {
     const post = {
         title: req.body.title,
         id: req.body.id,
+        img: '',
         contents: req.body.contents,
         author: req.body.author,
         date: moment().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
