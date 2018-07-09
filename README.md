@@ -1,6 +1,7 @@
 # Core Technology
 Following technologies are used in this project (some are omitted)
-##backend
+
+## backend
 - Node.js
 - Express
 - MongoDB
@@ -9,7 +10,7 @@ Following technologies are used in this project (some are omitted)
 - express-asyncify
 - express-generator
 
-##frontend
+## frontend
 - react
 - react-dom
 - react-router
