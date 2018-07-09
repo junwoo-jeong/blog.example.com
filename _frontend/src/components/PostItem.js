@@ -1,17 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import LinesEllipsis from 'react-lines-ellipsis';
 
-const PostItem = ({ img, title, date, contents }) => {
+const PostItem = ({ post }) => {
     return(
         <PostItemContainer>
-            <Link to='/home'>
-                <PostImage src={img} />
+            <Link to={`/post/${post.id}`}>
+                <PostImage src={post.img} />
             </Link>
-            <PostTitle to='/home'><StyledLink to='/home'>{title}</StyledLink></PostTitle>
-            <PostDate to='/home'><StyledLink to='/home'>{date}</StyledLink></PostDate>
+            <PostTitle to={`/post/${post.id}`}><StyledLink to='/home'>{post.title}</StyledLink></PostTitle>
+            <PostDate to={`/post/${post.id}`}><StyledLink to='/home'>{post.date}</StyledLink></PostDate>
             <Devider />
-            <PostContents>{contents}</PostContents>
+            <PostContents>
+                <LinesEllipsis
+                    text={post.contents}
+                    maxLine='3'
+                    ellipsis='...'
+                    trimRight
+                    basedOn='letters' />
+            </PostContents>
         </PostItemContainer>
     )
 }
