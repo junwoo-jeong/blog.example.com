@@ -1,5 +1,6 @@
 import React from 'react';
 import queryString from 'query-string';
+
 import PostEditor from '../components/PostEditor';
 
 const About = ({location, match}) => {

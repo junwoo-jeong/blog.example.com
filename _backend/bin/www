@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 require('dotenv').config();
-
+console.log(process.env.DB_URI);
 /**
  * Module dependencies.
  */

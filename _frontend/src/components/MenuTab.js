@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { List, Home, AssignmentInd } from '@material-ui/icons';
+import { List, Home, AssignmentInd, Create } from '@material-ui/icons';
 
 class MenuTab extends Component {
     render() {
@@ -17,7 +17,10 @@ class MenuTab extends Component {
                         <StyledLink to="/"><Home /><span>Home</span></StyledLink>
                     </MenuItem>
                     <MenuItem>
-                        <StyledLink to="/"><List /><span>Post</span></StyledLink>
+                        <StyledLink to="/post"><List /><span>글</span></StyledLink>
+                    </MenuItem>
+                    <MenuItem>
+                        <StyledLink to="/write"><Create /><span>글쓰기</span></StyledLink>
                     </MenuItem>
                     <MenuItem>
                         <StyledLink to="/about"><AssignmentInd /><span>About Me</span></StyledLink>
