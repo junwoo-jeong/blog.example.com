@@ -18,6 +18,7 @@ Following technologies are used in this project (some are omitted)
 - create-react-app
 - babel
 - webpack
+-
 
 ## development log
     https://trello.com/b/M283q6Su
