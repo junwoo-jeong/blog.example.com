@@ -4,15 +4,11 @@ import { Home, About, Write } from 'pages';
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
-    html {
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-    }
     body {
         margin: 0;
         padding: 0;
         font-family: 'Nanum Gothic', sans-serif;
-        background-color: #f0f0f0;
+        background-color: white;
     }
 `;
 class App extends Component {
