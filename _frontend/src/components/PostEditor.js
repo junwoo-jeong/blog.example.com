@@ -9,6 +9,8 @@
 
 /* import react modules */
 import React, {Component} from 'react';
+import PostEditorTitle from '../components/PostEditorTitle';
+import { Create } from '@material-ui/icons';
 
 /* import editor modules */
 import {stateToHTML} from 'draft-js-export-html';
@@ -140,8 +142,9 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 const {InlineToolbar} = inlineToolbarPlugin;
 const plugins = [focusPlugin, dividerPlugin, sideToolbarPlugin, inlineToolbarPlugin];
 
-class PostEditorTextarea extends Component {
+class PostEditor extends Component {
     state = {
+        title: '',
         editorState: EditorState.createWithContent(convertFromRaw(initialState))
     };
 
@@ -149,30 +152,76 @@ class PostEditorTextarea extends Component {
         this.setState({
             editorState
         });
+        console.log(stateToHTML(this.state.editorState.getCurrentContent()));
     };
 
     focus = () => {
         this.editor.focus();
     };
 
+    _handleOnTitleChanged = (e) => {
+        this.setState({
+            title: e.target.value
+        })
+        console.log(this.state);
+    }
+    _onUpload = () => {
+        const data = JSON.stringify({
+            "title": this.state.title,
+            "contents": stateToHTML(this.state.editorState.getCurrentContent())
+       });
+        fetch('http://localhost:3001/api/post/write', {
+            method: 'post',
+            headers: {'Content-Type':'application/json'},
+            body: data
+        })
+    }
     render() {
-
-
         return (
-            <EditorWrapper onClick={this.focus}>
-                <Editor
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
-                    plugins={plugins}
-                    ref={(element) => {
-                        this.editor = element;
-                    }}
-                />
-            <InlineToolbar/>
-            <SideToolbar />
-        </EditorWrapper>);
+            <Constainer>
+                <PostEditorTitle
+                    title={this.state.title}
+                    handleOnChanged={this._handleOnTitleChanged} />
+                <EditorWrapper onClick={this.focus}>
+                    <Editor
+                        editorState={this.state.editorState}
+                        onChange={this.onChange}
+                        plugins={plugins}
+                        ref={(element) => {
+                            this.editor = element;
+                        }}
+                    />
+                    <InlineToolbar />
+                    <SideToolbar />
+                </EditorWrapper>
+                <PostUploadButton onClick={this._onUpload}>
+                    <Create /><span>글 쓰기</span>
+                </PostUploadButton>
+            </Constainer>
+        );
     }
 }
+const Constainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    margin-top: 20px;
+`;
+
+const PostUploadButton = styled.button`
+    width: 300px;
+    cousor: pointer;
+    background-color: #fff;
+    -webkit-appearance: none;
+    cursor: pointer;
+    &:active,
+    &:focus {
+        outline: none;
+    }
+`;
+
 const HeadlineButtonWrapper = styled.div `
     display: inline-block;
 `;
@@ -206,4 +255,4 @@ const EditorWrapper = styled.div `
     }
 `;
 
-export default PostEditorTextarea;
+export default PostEditor;

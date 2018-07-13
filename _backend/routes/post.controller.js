@@ -12,7 +12,6 @@ import moment from 'moment-timezone';
 export const getPostPage = async (req, res) => {
     if(!req.query.page) throw error;
     const page = req.query.page;
-    console.log();
     try {
         const posts = await Post.getPostsPage(page);
         res.json(posts);
@@ -36,14 +35,14 @@ export const getPostById = async (req, res) => {
 export const writePost = async (req, res) => {
     const post = {
         title: req.body.title,
-        id: req.body.id,
+        id: '100',
         img: '',
         contents: req.body.contents,
-        author: req.body.author,
+        author: 'junwoo jeong',
         date: moment().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
         comments: [],
-        category: req.body.category,
-        tag: teq.body.tags
+        category: '',
+        tag: []
     };
     try {
         const result = await Post.writePost(post);

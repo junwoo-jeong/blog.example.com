@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 /* import container modules */
 import MenuContainer from '../container/MenuContainer';
-import WriteContainer from '../container/WriteContainer';
+import PostEditor from '../components/PostEditor';
 
 class Write extends Component {
     render() {
@@ -14,7 +14,7 @@ class Write extends Component {
                     <MenuContainer />
                 </header>
                 <Section>
-                    <WriteContainer />
+                    <PostEditor />
                 </Section>
             </Fragment>
         )
