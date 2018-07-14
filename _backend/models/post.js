@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-
 const Tag = new Schema({
     title: {type: String}
 });
@@ -13,7 +12,6 @@ const Comment = new Schema({
 const Post = new Schema({
     title: { type: String },
     img: { type: String},
-    id: { type: String }, //id : auto increment colomn
     contents: { type: String },
     author: { type: String, default: 'jeong' },
     date: { type: String },
@@ -27,17 +25,16 @@ Post.statics.getPostsPage = function(page) {
     return this.find().sort({ "_id": -1 }).skip((page-1)*5).limit(5);
 };
 
-//특정 id post 가져 오기
-Post.statics.getPostById = function(targetId) {
-    return this.findOne({ id: targetId });
+//특정 title post 가져 오기
+Post.statics.getPostById = function(title) {
+    return this.findOne({ title: title });
 };
 
 //글 쓰기
-Post.statics.writePost = function({ title, img, id, contents, author, date, category, tag, comments }) {
+Post.statics.writePost = function({ title, img, contents, author, date, category, tag, comments }) {
     const post = new this({
         title,
         img,
-        id,
         contents,
         author,
         date,
@@ -54,7 +51,6 @@ Post.statics.updatePost = function(targetId, {title, contents, author, date, cat
     return this.findOneAndUpdate({id: targetId},{
         $set: {
             title,
-            id: targetId,
             contents,
             author,
             date,
@@ -65,13 +61,12 @@ Post.statics.updatePost = function(targetId, {title, contents, author, date, cat
 }
 
 //글 삭제
-Post.statics.deletePost = function(targetId) {
-    return this.findOneAndDelete({id: targetId});
+Post.statics.deletePost = function(title) {
+    return this.findOneAndDelete({title: title});
 }
 
 //글 검색
 Post.statics.search = function(title) {
 
 }
-
 export default mongoose.model('Post', Post);

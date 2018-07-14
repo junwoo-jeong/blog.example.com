@@ -1,5 +1,6 @@
 import Post from './../models/post.js';
 import moment from 'moment-timezone';
+
 //import queryString from 'query-string'; 나중에 검색 기능 추가할때
 //쿼리를 편하게 변경
 
@@ -22,9 +23,9 @@ export const getPostPage = async (req, res) => {
 
 // URL : api/post/:id     METHOD : GET
 export const getPostById = async (req, res) => {
-    const targetId = req.params.id;
+    const title = req.params.title;
     try {
-        const post = await Post.getPostById(targetId);
+        const post = await Post.getPostById(title);
         res.json(post);
     } catch (error) {
         throw error;
@@ -35,7 +36,6 @@ export const getPostById = async (req, res) => {
 export const writePost = async (req, res) => {
     const post = {
         title: req.body.title,
-        id: '100',
         img: '',
         contents: req.body.contents,
         author: 'junwoo jeong',

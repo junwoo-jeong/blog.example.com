@@ -6,11 +6,11 @@ import LinesEllipsis from 'react-lines-ellipsis';
 const PostItem = ({ post }) => {
     return(
         <PostItemContainer>
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/${post.title}`}>
                 <PostImage src={post.img} />
             </Link>
-            <PostTitle to={`/post/${post.id}`}><StyledLink to='/home'>{post.title}</StyledLink></PostTitle>
-            <PostDate to={`/post/${post.id}`}><StyledLink to='/home'>{post.date}</StyledLink></PostDate>
+            <PostTitle><StyledLink to={`/post/${post.title}`}>{post.title}</StyledLink></PostTitle>
+            <PostDate><StyledLink to={`/post/${post.title}`}></StyledLink></PostDate>
             <Devider />
             <PostContents>
                 <LinesEllipsis
