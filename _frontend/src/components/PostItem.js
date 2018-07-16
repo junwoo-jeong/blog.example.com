@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import LinesEllipsis from 'react-lines-ellipsis';
 
 const PostItem = ({ post }) => {
+    let contents = post.contents.replace(/<br\/>/ig, "\n");
+    contents = contents.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
     return(
         <PostItemContainer>
             <Link to={`/post/${post.title}`}>
                 <PostImage src={post.img} />
             </Link>
             <PostTitle><StyledLink to={`/post/${post.title}`}>{post.title}</StyledLink></PostTitle>
-            <PostDate><StyledLink to={`/post/${post.title}`}></StyledLink></PostDate>
+            <PostDate><StyledLink to={`/post/${post.title}`}>{post.date}</StyledLink></PostDate>
             <Devider />
             <PostContents>
                 <LinesEllipsis
-                    text={post.contents}
+                    text={contents}
                     maxLine='3'
                     ellipsis='...'
                     trimRight

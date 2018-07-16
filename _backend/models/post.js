@@ -26,7 +26,7 @@ Post.statics.getPostsPage = function(page) {
 };
 
 //특정 title post 가져 오기
-Post.statics.getPostById = function(title) {
+Post.statics.getPostByTitle = function(title) {
     return this.findOne({ title: title });
 };
 

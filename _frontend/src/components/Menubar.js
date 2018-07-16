@@ -18,7 +18,7 @@ class MenuBar extends Component{
                         <Menu />
                     </MenuButton>
                     <Title>
-                        <span>ㅎㅇㅇㅎㅎㅇㅎㅇㅎㅇ</span>
+                        <span>BLOG</span>
                     </Title>
                     <SearchButton onClick={onClickedSearch}>
                         <Search />

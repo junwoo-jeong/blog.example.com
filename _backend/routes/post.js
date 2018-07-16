@@ -6,7 +6,7 @@ const router = asyncify(express.Router());
 
 
 router.get('/', controller.getPostPage);
-router.get('/:title', controller.getPostById);
+router.get('/:title', controller.getPostByTitle);
 router.post('/write', controller.writePost);
 //router.put('/:id/update', controller.updatePost);
 //router.delete('/:id/delete', controller.deletePost);

@@ -21,11 +21,11 @@ export const getPostPage = async (req, res) => {
     }
 }
 
-// URL : api/post/:id     METHOD : GET
-export const getPostById = async (req, res) => {
+// URL : api/post/:title     METHOD : GET
+export const getPostByTitle = async (req, res) => {
     const title = req.params.title;
     try {
-        const post = await Post.getPostById(title);
+        const post = await Post.getPostByTitle(title);
         res.json(post);
     } catch (error) {
         throw error;
@@ -34,9 +34,10 @@ export const getPostById = async (req, res) => {
 
 // URL : api/post/write     METHOD : POST
 export const writePost = async (req, res) => {
+    console.log();
     const post = {
         title: req.body.title,
-        img: '',
+        img: req.body.img,
         contents: req.body.contents,
         author: 'junwoo jeong',
         date: moment().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
@@ -67,7 +68,7 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
     const targetId = req.params.id
     try {
-
+        
     } catch (error) {
 
     }

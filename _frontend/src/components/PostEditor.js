@@ -11,6 +11,7 @@
 import React, {Component} from 'react';
 import PostEditorTitle from '../components/PostEditorTitle';
 import { Create } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 /* import editor modules */
 import {stateToHTML} from 'draft-js-export-html';
@@ -145,6 +146,7 @@ const plugins = [focusPlugin, dividerPlugin, sideToolbarPlugin, inlineToolbarPlu
 class PostEditor extends Component {
     state = {
         title: '',
+        titleImg: '',
         editorState: EditorState.createWithContent(convertFromRaw(initialState))
     };
 
@@ -165,9 +167,17 @@ class PostEditor extends Component {
         })
         console.log(this.state);
     }
+    _handleOnTitleImgChanged = (e) => {
+        this.setState({
+            titleImg: e.target.value
+        })
+        console.log(this.state);
+    }
     _onUpload = () => {
+        console.log(this.state.titleImg);
         const data = JSON.stringify({
             "title": this.state.title,
+            "img": this.state.titleImg,
             "contents": stateToHTML(this.state.editorState.getCurrentContent())
        });
         fetch('http://localhost:3001/api/post/write', {
@@ -180,8 +190,8 @@ class PostEditor extends Component {
         return (
             <Constainer>
                 <PostEditorTitle
-                    title={this.state.title}
-                    handleOnChanged={this._handleOnTitleChanged} />
+                    onTitleChanged={this._handleOnTitleChanged}
+                    onTitleImgChanged ={this._handleOnTitleImgChanged} />
                 <EditorWrapper onClick={this.focus}>
                     <Editor
                         editorState={this.state.editorState}
@@ -195,7 +205,7 @@ class PostEditor extends Component {
                     <SideToolbar />
                 </EditorWrapper>
                 <PostUploadButton onClick={this._onUpload}>
-                    <Create /><span>글 쓰기</span>
+                    <StyledLink to={'/'}>글 쓰기</StyledLink>
                 </PostUploadButton>
             </Constainer>
         );
@@ -253,6 +263,12 @@ const EditorWrapper = styled.div `
     &:global(.public-DraftEditor-content) {
         min-height: 140px;
     }
+`;
+
+const StyledLink = styled(Link)`
+    display: block;
+    text-decoration: none;
+    color: black;
 `;
 
 export default PostEditor;

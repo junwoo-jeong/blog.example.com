@@ -58,9 +58,9 @@ class PostListContainer extends Component {
 
     _createItems = () => {
         const { posts } = this.state;
-        return posts.map(post => {
+        return posts.map((post, index) => {
             return <PostItem
-                key={post.id}
+                key={index}
                 post={post} />
         });
     }
