@@ -1,6 +1,9 @@
-## development log
-    https://trello.com/b/M283q6Su
+## Show Demo
+    https://smallThinking.github.io/blog
     
+## Development log
+    https://trello.com/b/M283q6Su
+
 ## Core Technology
 Following technologies are used in this project (some are omitted)
 
@@ -29,6 +32,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 - Node.js v8^
+- npm
 - yarn
 - MongoDB
 
