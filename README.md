@@ -1,8 +1,10 @@
 ## Show Demo
-    .[smallthinking.github.io/blog](https://smallThinking.github.io/blog)
+.[smallthinking.github.io/blog](https://smallThinking.github.io/blog)
+
 
 ## Development log
-    .[devlog](https://trello.com/b/M283q6Su)
+.[devlog](https://trello.com/b/M283q6Su)
+
 
 ## Core Technology
 Following technologies are used in this project (some are omitted)
@@ -25,6 +27,7 @@ Following technologies are used in this project (some are omitted)
 - dotenv
 - express-asyncify
 - express-generator
+
 
 ## Running on your Machine
 
